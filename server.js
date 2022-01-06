@@ -64,7 +64,7 @@ const options = {
 		},
 		servers: [
 			{
-				url: "http://localhost:3000",
+				url: "https://credo-shoppingcartv5.herokuapp.com",
 			},
 		],
 	},
