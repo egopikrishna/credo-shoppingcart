@@ -473,7 +473,7 @@ const myStorage = multer.diskStorage({
     },
     filename: (req, file, cb)=>{
 
-        cb(null, file.originalname+"-"+new Date().getTime()+".png");
+        cb(null, file.originalname);
     }
 });
 
