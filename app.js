@@ -303,17 +303,29 @@ console.log(req.body);
 
     console.log(req.body);
 
-    db.collection("users").save(req.body, (error, data)=>{
+    db.collection("users").count({Username : req.body.Username}, (error, data)=>{
 
-        if(error)
+        if(data==0)
         {
-            res.status(403).json("Error in Insert method");
+            db.collection("users").save(req.body, (error1, data1)=>{
+
+                if(error1)
+                {
+                    res.status(403).json("Error in Insert method");
+                }
+                else {
+                    res.json("User Registered Successfully");
+                }
+        
+            });
         }
         else {
-            res.json("User Registered Successfully");
+            res.json("The Username Already Taken");
         }
-
+        
     });
+
+    
 });
 
 /**
