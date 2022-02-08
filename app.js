@@ -320,7 +320,7 @@ console.log(req.body);
             });
         }
         else {
-            res.json("The Username Already Taken");
+            res.status(409).json("The Username Already Taken");
         }
         
     });
