@@ -598,12 +598,22 @@ app.post("/addtocart", verifyToken, (req, res)=>{
     req.body.cartUserId = loggeduser._id;
     req.body.cartPdtQty = 1;
 
-    console.log(req.body);
+    db.collection("cart").count({cartPdtId : req.body.cartPdtId, cartUserId : loggeduser._id}, (error, data)=>{
 
-    db.collection("cart").insertOne(req.body, (error, data)=>{
+        if(data==0)
+        {
+            db.collection("cart").insertOne(req.body, (error1, data1)=>{
 
-        res.json("Cart Item Added Successfully");
+                res.json("Cart Item Added Successfully");
+            });
+        }
+        else {
+            res.status(409).json("This Product Already Added in Your Cart!");
+        }
+        
     });
+
+    
 });
 
 /**
