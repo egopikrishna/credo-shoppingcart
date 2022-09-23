@@ -35,7 +35,6 @@ app.use((req, res, next)=>{             // common for all the path
 });
 
 app.use("/home", (req, res, next)=>{             // common for particular specifi path
-
     console.log("Middleware 2");
 
     next();
