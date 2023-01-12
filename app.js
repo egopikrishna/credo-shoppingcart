@@ -27,11 +27,8 @@ app.use(bodyparser.json());
 app.use(cors());
 
 app.use((req, res, next)=>{             // common for all the path
-
     console.log("Middleware 1");
-
     next();
-
 });
 
 app.use("/home", (req, res, next)=>{             // common for particular specifi path
