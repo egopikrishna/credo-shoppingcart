@@ -51,7 +51,7 @@ function verifyUser(req, res, next)
 app.get("/", (req, res)=>{
 
     console.log("Index page");
-    res.send("<h1>Welcome to Express</h1>");
+    res.send("<h1>Welcome to Our App</h1>");
 
 });
 
