@@ -19,7 +19,6 @@ else {
     db = result.db("shoppingcartOct930vel");
     console.log("DB Connected");
 }
-
 });
 
 app.use(bodyparser.json());
