@@ -64,7 +64,7 @@ const options = {
 		},
 		servers: [
 			{
-				url: "https://credo-shoppingcartv5.herokuapp.com",
+				url: "https://rich-gold-kingfisher-coat.cyclic.app",
 			},
 		],
 	},
