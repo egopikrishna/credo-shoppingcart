@@ -203,10 +203,11 @@ app.get("/getpdtcatwise/:catid", (req, res)=>{
 
 app.get("/getcategories", (req, res)=>{
   dbConnection();
-    db.collection("category").find().toArray((error, data)=>{
+   /* db.collection("category").find().toArray((error, data)=>{
 
         res.json(data);
-    });
+    });*/
+  res.json(db);
 });
 
 
