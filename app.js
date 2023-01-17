@@ -8,6 +8,10 @@ require("reflect-metadata");
 
 const app = express();
 
+app.use(bodyparser.json());
+
+app.use(cors());
+
 var db;
 
 const dbConnection = function() {
@@ -27,10 +31,6 @@ const dbConnection = function() {
 }
 
 dbConnection();
-
-app.use(bodyparser.json());
-
-app.use(cors());
 
 app.use((req, res, next)=>{             // common for all the path
     console.log("Middleware 1");
