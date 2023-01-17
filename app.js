@@ -9,7 +9,7 @@ const app = express();
 
 var db;
 
-await mongodb.connect("mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/shoppingcartOct930vel?retryWrites=true&w=majority", (error, result)=>{
+mongodb.connect("mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/shoppingcartOct930vel?retryWrites=true&w=majority", (error, result)=>{
 
 if(error)
 {
