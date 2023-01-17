@@ -9,14 +9,17 @@ const app = express();
 
 var db;
 
-const dbConnection = async function() {
+const dbConnection = function() {
+    console.log('inside db conn');
     const uri = "mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-   await client.connect(err => {
+    client.connect(err => {
+        console.log('connecting..');
     if(!err){
         db = client.db("shoppingcartOct930vel");
         console.log("DB Connected");
     } else {
+        console.log('err', err);
         console.log("DB Not Connected");
     }     
     });
@@ -200,12 +203,9 @@ app.get("/getpdtcatwise/:catid", (req, res)=>{
  */
 
 app.get("/getcategories", (req, res)=>{
-  dbConnection();
-   /* db.collection("category").find().toArray((error, data)=>{
-
+    db.collection("category").find().toArray((error, data)=>{
         res.json(data);
-    });*/
-  res.json('db');
+    });
 });
 
 
