@@ -9,7 +9,8 @@ const app = express();
 
 var db;
 
-mongodb.connect("mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/shoppingcartOct930vel?retryWrites=true&w=majority", (error, result)=>{
+const dbConnection = async function() {
+  await  mongodb.connect("mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/shoppingcartOct930vel?retryWrites=true&w=majority",  { useNewUrlParser: true, useUnifiedTopology: true }, (error, result)=>{
 
 if(error)
 {
@@ -20,6 +21,10 @@ else {
     console.log("DB Connected");
 }
 });
+
+}
+
+dbConnection();
 
 app.use(bodyparser.json());
 
