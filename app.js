@@ -4,6 +4,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyparser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
+require("reflect-metadata");
 
 const app = express();
 
