@@ -207,7 +207,7 @@ app.get("/getcategories", (req, res)=>{
 
         res.json(data);
     });*/
-  res.json(db);
+  res.json('db');
 });
 
 
