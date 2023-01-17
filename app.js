@@ -16,7 +16,7 @@ var db;
 
 const dbConnection = function() {
     console.log('inside db conn');
-    const uri = "mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/?retryWrites=true&w=majority";
+    const uri = "mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/shoppingcartOct930vel?retryWrites=true&w=majority";
     const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
     client.connect(err => {
         console.log('connecting..');
