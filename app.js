@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const mongodb = require("mongodb").MongoClient;
+const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyparser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
@@ -10,18 +10,16 @@ const app = express();
 var db;
 
 const dbConnection = async function() {
-  await  mongodb.connect("mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/shoppingcartOct930vel?retryWrites=true&w=majority",  { useNewUrlParser: true, useUnifiedTopology: true }, (error, result)=>{
-
-if(error)
-{
-    console.log("DB Not Connected");
-}
-else {
-    db = result.db("shoppingcartOct930vel");
-    console.log("DB Connected");
-}
-});
-
+    const uri = "mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+   await client.connect(err => {
+    if(!err){
+        db = client.db("shoppingcartOct930vel");
+        console.log("DB Connected");
+    } else {
+        console.log("DB Not Connected");
+    }     
+    });
 }
 
 dbConnection();
