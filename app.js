@@ -1,43 +1,45 @@
 const express = require("express");
 const cors = require("cors");
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const mongodb = require("mongodb").MongoClient;
 const bodyparser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const multer = require("multer");
-require("reflect-metadata");
 
 const app = express();
 
 var db;
 
-const dbConnection = function() {
-    console.log('inside db conn');
-    const uri = "mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/shoppingcartOct930vel?retryWrites=true&w=majority";
-    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-    client.connect(err => {
-        console.log('connecting..');
-    if(!err){
-        db = client.db("shoppingcartOct930vel");
-        console.log("DB Connected");
-    } else {
-        console.log('err', err);
-        console.log("DB Not Connected");
-    }     
-    });
+mongodb.connect("mongodb+srv://gopi:gopi@mycluster.csmbn.mongodb.net/shoppingcartOct930vel?retryWrites=true&w=majority", (error, result)=>{
+
+if(error)
+{
+    console.log("DB Not Connected");
+}
+else {
+    db = result.db("shoppingcartOct930vel");
+    console.log("DB Connected");
 }
 
-dbConnection();
+});
 
 app.use(bodyparser.json());
 
 app.use(cors());
 
 app.use((req, res, next)=>{             // common for all the path
+
+    console.log("Middleware 1");
+
     next();
+
 });
 
 app.use("/home", (req, res, next)=>{             // common for particular specifi path
+
+    console.log("Middleware 2");
+
     next();
+
 });
 
 
@@ -53,7 +55,7 @@ function verifyUser(req, res, next)
 app.get("/", (req, res)=>{
 
     console.log("Index page");
-    res.send("<h1>Welcome to Our App</h1>");
+    res.send("<h1>Welcome to Express</h1>");
 
 });
 
