@@ -64,7 +64,7 @@ const options = {
 		},
 		servers: [
 			{
-				url: "https://rich-gold-kingfisher-coat.cyclic.app",
+				url: "http://localhost:3000",
 			},
 		],
 	},
